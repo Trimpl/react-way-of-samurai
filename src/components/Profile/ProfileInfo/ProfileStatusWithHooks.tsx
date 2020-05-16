@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/components/Profile/ProfileInfo/ProfileStatusWithHooks.tsx
 import React, {useState, useEffect, ChangeEvent} from 'react';
 
 type PropsType = {
@@ -6,6 +7,11 @@ type PropsType = {
 }
 
 const ProfileStatusWithHooks: React.FC<PropsType> = (props) => {
+=======
+import React, {useState, useEffect} from 'react';
+import s from './ProfileInfo.module.css';
+
+>>>>>>> parent of 2cedb1d... 99 - about everything:src/components/Profile/ProfileInfo/ProfileStatusWithHooks.jsx
 
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);

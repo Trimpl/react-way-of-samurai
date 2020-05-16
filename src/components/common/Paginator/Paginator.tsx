@@ -29,7 +29,7 @@ let Paginator: React.FC<PropsType> = ({totalItemsCount, pageSize,
     let rightPortionPageNumber = portionNumber * portionSize;
 
 
-    return <div className={cn(styles.paginator)}>
+    return <div className={styles.paginator}>
         { portionNumber > 1 &&
         <button onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button> }
 

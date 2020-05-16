@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {HashRouter, Route, withRouter} from "react-router-dom";
 
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -25,24 +25,26 @@ const SuspendedDialogs = withSuspense(DialogsContainer);
 const SuspendedProfile = withSuspense(ProfileContainer);
 
 
+<<<<<<< HEAD:src/App.tsx
 class App extends Component<MapPropsType & DispatchPropsType> {
     catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
         alert("Some error occured");
     }
+=======
+
+class App extends Component {
+>>>>>>> parent of 2cedb1d... 99 - about everything:src/App.js
     componentDidMount() {
         this.props.initializeApp();
-        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
-    }
-    componentWillUnmount() {
-        window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
     }
 
     render() {
         if (!this.props.initialized) {
-            return <Preloader/>
+            return <Preloader />
         }
 
         return (
+<<<<<<< HEAD:src/App.tsx
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <Navbar/>
@@ -69,6 +71,25 @@ class App extends Component<MapPropsType & DispatchPropsType> {
 
                 </div>
             </div>
+=======
+                    <div className='app-wrapper'>
+                        <HeaderContainer/>
+                        <Navbar/>
+                        <div className='app-wrapper-content'>
+                            <Route path='/dialogs'
+                                   render={withSuspense(DialogsContainer)}/>
+
+                            <Route path='/profile/:userId?'
+                                   render={withSuspense(ProfileContainer)} />
+
+                            <Route path='/users'
+                                   render={() => <UsersContainer/>}/>
+
+                            <Route path='/login'
+                                   render={() => <LoginPage/>}/>
+                        </div>
+                    </div>
+>>>>>>> parent of 2cedb1d... 99 - about everything:src/App.js
         )
     }
 }
@@ -81,12 +102,17 @@ let AppContainer = compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App);
 
+<<<<<<< HEAD:src/App.tsx
 const SamuraiJSApp: React.FC = () => {
     return <BrowserRouter>
+=======
+const SamuraiJSApp = (props) => {
+   return <HashRouter >
+>>>>>>> parent of 2cedb1d... 99 - about everything:src/App.js
         <Provider store={store}>
-            <AppContainer/>
+            <AppContainer />
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 }
 
 export default SamuraiJSApp;
